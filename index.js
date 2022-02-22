@@ -5,6 +5,7 @@ const app = express();
 const path = require("path");
 
 const homeRoutes = require("./controllers/home");
+const userController = require("./controllers/user.controller");
 
 app.set("view engine", "ejs"), app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public")));
@@ -19,8 +20,9 @@ monoose
   });
 
 app.use("", homeRoutes);
+app.use("/user", userController)
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 2200;
 app.listen(port, () => {
   console.log(`server started port ${port}`);
 });

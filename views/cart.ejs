@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DMart Ready</title>
+    <link rel="stylesheet" href="../public/css/Cart.css">
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link rel="stylesheet" href="./styles/search.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" type="image/png" href="/images/icon.png" />
+</head>
+<style>
+    body {
+  margin: 0;
+}
+
+.cart_container {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+  border: 5px solid red transparent;
+}
+
+.cart_nav {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid green;
+}
+
+.cart_nav > div > p {
+  color: black;
+  font-weight: bolder;
+}
+
+.cart_nav_bottom {
+  border-bottom: 2px solid green;
+}
+
+.cart_nav_bottom,
+.cart_nav > div:nth-child(2) {
+  display: flex;
+  justify-content: right;
+}
+
+.cart_nav_bottom > button,
+.cart_nav > div > button {
+  width: 100%;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  border: 0;
+}
+
+.cart_nav_bottom > button:hover,
+.cart_nav > div > button:hover {
+  background-color: #477212;
+}
+
+.cart_container > p {
+  color: #c6668f;
+  text-align: center;
+}
+
+.cart_data_table {
+  width: 60%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid red transparent;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  /* border-bottom: 1pt solid #82ba3c; */
+  height: 120px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  font-size: large;
+}
+
+td {
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.checkout {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid red transparent;
+  font-size: large;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.checkout > div > button {
+  background-color: red;
+  cursor: pointer;
+  border-radius: 50px;
+  color: white;
+  -ms-flex-align: start;
+  margin-right: auto;
+
+  /* margin-left: 0; */
+}
+
+.checkout > div > button:hover {
+  background-color: #477212;
+}
+
+.total_amount > div {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  /* margin-right: 45px; */
+  text-align: center;
+  padding-right: 40px;
+
+  border: 1px solid blue transparent;
+}
+
+.total_amount {
+  border: 1px solid blue transparent;
+  box-shadow: rgba(236, 237, 238, 0.3) 0px 0px 0px 3px;
+}
+.total_amount > div > div:nth-child(2) {
+  margin-left: 200px;
+}
+#total {
+  text-align: center;
+}
+#sub-total {
+  text-align: center;
+}
+
+#remove-item-button {
+  color: Black;
+  /* border: 1px solid red transparent; */
+  /* border-radius: 10px; */
+  font-weight: bolder;
+  cursor: pointer;
+}
+.cart {
+  display: flex;
+  justify-content: space-between;
+}
+img {
+  margin-top: 5px;
+  width: 50px;
+  border: 2px solid red transparent;
+}
+#td6 {
+  display: flex;
+}
+/* #td2 > p {
+  margin-left: 90px;
+} */
+#check-price {
+  display: flex;
+}
+
+@media only screen and (min-width: 0) and (max-width: 376px) {
+  .header {
+    text-align: center;
+  }
+
+  #company-logo {
+    width: 80%;
+  }
+  .cart_container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .cart_data_table {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .cart {
+    width: 100%;
+    overflow-x: scroll;
+    display: inline-block;
+  }
+
+  .checkout {
+    width: 80%;
+    overflow-x: scroll;
+    display: inline-block;
+  }
+  .total {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  img {
+    margin-top: 5px;
+    width: 50px;
+    border: 2px solid red transparent;
+  }
+
+  td {
+    min-width: 200px;
+    padding: 0;
+  }
+  /* .footer {
+    justify-content: center;
+  }
+
+  .footer > div {
+    margin: 10px;
+  } */
+}
+
+@media only screen and (min-width: 376px) and (max-width: 1265px) {
+  .header {
+    text-align: center;
+  }
+
+  #company-logo {
+    width: 80%;
+  }
+  .cart_container {
+    width: 100%;
+    padding: 0;
+    display: inline-block;
+  }
+  .cart_data_table {
+    margin: auto;
+    width: 100%;
+    overflow-x: scroll;
+    display: inline-block;
+  }
+  .cart {
+    /* overflow-x: scroll; */
+    display: inline-block;
+  }
+  img {
+    margin-top: 5px;
+    width: 50px;
+    border: 2px solid red transparent;
+  }
+
+  .checkout {
+    width: 80%;
+    /* overflow-x: scroll; */
+    display: inline-block;
+  }
+  .total {
+    width: 100%;
+  }
+
+  /* td {
+    padding: 0px;
+  } */
+  /* .footer {
+    justify-content: center;
+  }
+
+  .footer > div {
+    margin: 20px;
+  } */
+}
+
+</style>
+<body>
+    <div id="navbar"></div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <ul id="searchList"></ul>
+        </div>
+      </div>
+  
+    <div class="cart_container">
+        <div class="cart_nav">
+            <div>
+                <p>Your Shopping Cart <b><label class="cart-items-count">0</b></label> Items</p>
+            </div>
+         
+        </div>
+        <!-- <p>GET YOUR ORDER DELIVERED TODAY</p> -->
+        <div class="cart">
+        <div class="cart_data_table">
+            <table>
+                <thead>
+                    <tr>
+                        <td>#</td>
+                         
+                        <td>Product</td>
+                         <td></td>
+                        <td>No. of items</td>
+                        <td>You Pay</td>
+                        <td>You Save</td>
+                        
+                      
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="checkout">
+          
+            <!-- <div class="total_amount">
+                <diV><p>Price Summary  <b><label id="cart-items-c">0</b></label>  Items</p></diV>
+                
+                <hr>
+                <div><p>Sub Total : ₹ <label id="sub-total"> 00</label></p></div>
+                
+                <hr>
+                <diV><p>Delivery Charges : ₹ <label>50.00</label></p></diV>
+                
+                <hr>
+                <div><p>Discount :  <label id="discount">00</label></p></div>
+                
+                <hr>
+                <div> <p><b>Total : ₹ <label id="total">₹ 50.00</label></b></p></div>
+               
+
+            </div> -->
+
+            <div class="total_amount">
+                <p>Price Summary <b><label id="cart-items-c">0</b></label> Items</p>
+                <hr />
+                <div>
+                  <div>Cart Total</div>
+                  <div>
+                    <p>Rs.<label id="sub-total"></label></p>
+                  </div>
+                </div>
+                <hr class="hr" />
+                <div>
+                  <div>Delivery Charge</div>
+                  <div>Rs.50</div>
+                </div>
+                <hr class="hr" />
+                <div>
+                  <div>Total Amount</div>
+                  <p>Rs.<label id="total"></label></p>
+                </div>
+                <hr class="hr" />
+               
+
+
+
+
+
+            <div class="cart_nav_bottom">
+                <button id="checkout-btn-bottom">PROCEED TO
+                   CHECKOUT</button>
+           </div>
+        </div>
+       
+    </div>
+</div>
+   
+</body>
+
+</html>
+

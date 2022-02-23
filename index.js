@@ -9,8 +9,8 @@ const homeRoutes = require("./controllers/home");
 const userController = require("./controllers/user.controller");
 const adressController = require("./controllers/adress.controller")
 
-// app.set("view engine", "ejs"), app.set("views", path.join(__dirname, "/views"));
-// app.use(express.static(path.join(__dirname, "/public")));
+app.set("view engine", "ejs"), app.set("views", path.join(__dirname, "/views"));
+app.use(express.static(path.join(__dirname, "/public")));
 
 monoose
   .connect(process.env.DB_URL)
@@ -22,7 +22,7 @@ monoose
   });
 
 app.use("", homeRoutes);
-app.use("/user", userController)
+app.use("/signup", userController)
 app.use("/adress", adressController)
 
 

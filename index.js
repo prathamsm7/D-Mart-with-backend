@@ -7,6 +7,7 @@ const path = require("path");
 app.use(express.json())
 const homeRoutes = require("./controllers/home");
 const userController = require("./controllers/user.controller");
+const adressController = require("./controllers/adress.controller")
 
 // app.set("view engine", "ejs"), app.set("views", path.join(__dirname, "/views"));
 // app.use(express.static(path.join(__dirname, "/public")));
@@ -19,9 +20,12 @@ monoose
   .catch((err) => {
     console.log(err.message);
   });
+
 app.use("", homeRoutes);
 app.use("/user", userController)
-app.post("/login",)
+app.use("/adress", adressController)
+
+
 let port = process.env.PORT || 2200;
 app.listen(port, () => {
   console.log(`server started port ${port}`);

@@ -7,7 +7,8 @@ const adressSchema = new mongoose.Schema({
     area: { type: String, require: true },
     adress1: { type: String, require: true },
     adress2: { type: String, require: true },
-    landmark:{type: String, require: true}
+    landmark: { type: String, require: true },
+    userId : {type: mongoose.Schema.Types.ObjectId, ref: "user"}
 }, {
     timestamps: true,
     versionkey: false

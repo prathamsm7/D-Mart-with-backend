@@ -27,8 +27,14 @@ router.post("", body("first_name").notEmpty().isLength({ min: 2 }, { max: 35 }),
     }
     })
 
-router.get("", (req, res) => {
-        res.render("signup.ejs")
+router.get("", async (req, res) => {
+  try {
+    const user = await User.find().lean().exec()
+    console.log(user.req.body)
+    return res.send(user)
+  } catch (e) {
+    console.log(e.message)
+        }
     })
 
 module.exports = router;

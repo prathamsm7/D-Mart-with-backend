@@ -24,7 +24,7 @@ const register = async (req, res) => {
     const newToken = token(user);
     // return user and token
     // console.log(user);
-    return res.redirect("/login");
+    return res.render("login", { user });
   } catch (e) {
     console.log(e);
     return res.redirect("/register");
@@ -52,11 +52,11 @@ const login = async (req, res) => {
       expire: new Date() + 9999,
     });
 
-    console.log("user", user);
+    // console.log("user", user);
     res.render("home", { user });
   } catch (e) {
     console.log(e.message);
   }
 };
 
-module.exports = { register, login };
+module.exports = { register, login, token };

@@ -4,10 +4,16 @@
 <!-- showing name in navbar -->
 <script>
   let name = document.getElementById("nav-name");
+  let cart = document.getElementById("cart");
+  let cartTotal = document.getElementById("crTotal");
 
-  `<% if (user) { %>`;
+  `<%if(user.user){ %>`;
+
   name.innerText = `<%= user.user.email%>`;
-  ` <% } %>`;
+  let userId = `<%=user.user._id%>`;
+  cart.firstElementChild.href = `http://localhost:4000/users/${userId}/cart`;
+  cartTotal.innerText = `<%= user.user.cart.length%>`;
+  `<%}%>`;
 </script>
 
 <%- include("./partials/header") %>
@@ -23,9 +29,6 @@
 
 <div id="continer">
   <div id="doulath">
-    <!-- <div id="cat">
-      <h3><i class="fas fa-bars" id="d"> All Categories</i></h3>
-    </div> -->
     <table>
       <thead>
         <tr>
@@ -33,23 +36,65 @@
         </tr>
       </thead>
       <tbody>
-        <tr id="dal" onclick="dals()">
-          <td>Dals</td>
+        <tr id="dal">
+          <td>
+            <a
+              href="/categories/grocery?subCat=Dal"
+              style="text-decoration: none"
+            >
+              Dals
+            </a>
+          </td>
         </tr>
-        <tr id="pulses" onclick="pulse()">
-          <td>Pulses</td>
+        <tr id="pulses">
+          <td>
+            <a
+              href="/categories/grocery?subCat=Pulses"
+              style="text-decoration: none"
+            >
+              Pulses
+            </a>
+          </td>
         </tr>
-        <tr id="dry" onclick="dry()">
-          <td>Dry Fruits</td>
+        <tr id="dry">
+          <td>
+            <a
+              href="/categories/grocery?subCat=Dry Fruits"
+              style="text-decoration: none"
+            >
+              Dry Fruits
+            </a>
+          </td>
         </tr>
-        <tr id="oil" onclick="oil()">
-          <td>Cooking Oil</td>
+        <tr id="oil">
+          <td>
+            <a
+              href="/categories/grocery?subCat=Cooking Oil"
+              style="text-decoration: none"
+            >
+              Cooking Oil
+            </a>
+          </td>
         </tr>
-        <tr id="masala" onclick="masala()">
-          <td>Masala & Spices</td>
+        <tr id="masala">
+          <td>
+            <a
+              href="/categories/grocery?subCat=Masala"
+              style="text-decoration: none"
+            >
+              Masala
+            </a>
+          </td>
         </tr>
-        <tr id="rice" onclick="rice()">
-          <td>Rice & Rice Products</td>
+        <tr id="rice">
+          <td>
+            <a
+              href="/categories/grocery?subCat=Rice %26 Rice Products"
+              style="text-decoration: none"
+            >
+              Rice & Rice Products
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -88,7 +133,12 @@
             <p style="font-size: 20px; margin-top: -15px">₹ 16</p>
           </div>
         </div>
-        <button id="but">🛒 ADD TO CART</button>
+        <form
+          action="/users/<%=user.user._id%>/<%=element._id%>/cart"
+          method="POST"
+        >
+          <button id="but">🛒 ADD TO CART</button>
+        </form>
       </div>
       <% }) %>
     </div>
@@ -97,7 +147,7 @@
 <%-include("./partials/footer") %>
 <script src="/js/search.js"></script>
 <script src="/js/navbar.js"></script>
-<script src="/js/grocery.js"></script>
+<!-- <script src="/js/grocery.js"></script> -->
 <script>
   let tb = document.getElementById("topbar");
   tb.innerHTML = topbar();

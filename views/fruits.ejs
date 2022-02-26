@@ -2,10 +2,16 @@
 <div id="navbar"><%- include("./partials/navbar") %></div>
 <script>
   let name = document.getElementById("nav-name");
+  let cart = document.getElementById("cart");
+  let cartTotal = document.getElementById("crTotal");
 
-  `<% if (user) { %>`;
+  `<%if(user.user){ %>`;
+
   name.innerText = `<%= user.user.email%>`;
-  ` <% } %>`;
+  let userId = `<%=user.user._id%>`;
+  cart.firstElementChild.href = `http://localhost:4000/users/${userId}/cart`;
+  cartTotal.innerText = `<%= user.user.cart.length%>`;
+  `<%}%>`;
 </script>
 
 <%- include("./partials/header") %>
@@ -57,7 +63,7 @@
     <div id="nav"></div>
     <h1 id="h1">Fruits & Vegetables</h1>
     <div id="con">
-      <% lists.forEach(element => { %> <%= console.log(element) %>
+      <% lists.forEach(element => { %>
       <div id="mainDiv">
         <div id="imgdiv">
           <img src="<%=element.imgUrl%>" /><img
@@ -87,7 +93,12 @@
             <p style="font-size: 20px; margin-top: -15px">₹ 16</p>
           </div>
         </div>
-        <button id="but">🛒 ADD TO CART</button>
+        <form
+          action="/users/<%=user.user._id%>/<%=element._id%>/cart"
+          method="POST"
+        >
+          <button id="but">🛒 ADD TO CART</button>
+        </form>
       </div>
       <% }) %>
     </div>

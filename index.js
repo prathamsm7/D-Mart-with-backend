@@ -8,7 +8,7 @@ const methodOverride = require("method-override");
 const homeRoutes = require("./controllers/home");
 const categories = require("./controllers/allCategories");
 const productController = require("./controllers/product.controller");
-const userRoutes = require("./controllers/user.controller");
+const userController = require("./controllers/user.controller");
 const { register, login } = require("./controllers/auth.controller");
 
 app.use(express.json());
@@ -39,9 +39,32 @@ app.post("/login", login);
 app.use("", homeRoutes);
 
 app.use("/categories", categories);
-app.use("/users", userRoutes);
+app.use("/users", userController);
 app.use("/products", productController);
 
+app.get("/payment", (req, res) => {
+  try {
+    res.render("payment");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/gateway", (req, res) => {
+  try {
+    res.render("gateway");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/otp", (req, res) => {
+  try {
+    res.render("otp");
+  } catch (error) {
+    console.log(error);
+  }
+});
 let port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`server started port ${port}`);

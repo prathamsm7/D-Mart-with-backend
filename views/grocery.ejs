@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="/css/cate.css" />
+<div id="navbar"><%- include("./partials/navbar") %></div>
+
+<!-- showing name in navbar -->
+<script>
+  let name = document.getElementById("nav-name");
+
+  `<% if (user) { %>`;
+  name.innerText = `<%= user.user.email%>`;
+  ` <% } %>`;
+</script>
+
+<%- include("./partials/header") %>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <ul id="searchList"></ul>
+  </div>
+</div>
+<div id="topbar"></div>
+
+<div id="continer">
+  <div id="doulath">
+    <!-- <div id="cat">
+      <h3><i class="fas fa-bars" id="d"> All Categories</i></h3>
+    </div> -->
+    <table>
+      <thead>
+        <tr>
+          <th><h3>Grocery</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="dal" onclick="dals()">
+          <td>Dals</td>
+        </tr>
+        <tr id="pulses" onclick="pulse()">
+          <td>Pulses</td>
+        </tr>
+        <tr id="dry" onclick="dry()">
+          <td>Dry Fruits</td>
+        </tr>
+        <tr id="oil" onclick="oil()">
+          <td>Cooking Oil</td>
+        </tr>
+        <tr id="masala" onclick="masala()">
+          <td>Masala & Spices</td>
+        </tr>
+        <tr id="rice" onclick="rice()">
+          <td>Rice & Rice Products</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="basha">
+    <div id="nav"></div>
+    <h1 id="h1">DMart Grocery</h1>
+    <div id="con">
+      <% lists.forEach(element => { %>
+      <div id="mainDiv">
+        <div id="imgdiv">
+          <img src="<%=element.imgUrl%>" /><img
+            id="veg"
+            src="https://content.dmart.in/site/static/media/veg.1a9a7a12.svg"
+          />
+        </div>
+        <h4><%= element.name %></h4>
+        <div style="display: flex">
+          <div id="Tax">
+            <div class="smallDiv" style="display: flex">
+              <div style="margin-right: 25%">
+                <p>MRP</p>
+                <p class="price2"><%= element.strikedOffPrice %></p>
+              </div>
+              <div>
+                <p>DMart</p>
+                <p class="price"><%= element.price %></p>
+              </div>
+            </div>
+            <p style="font-style: italic; margin-top: -15px">
+              (Inclusive of all taxes)
+            </p>
+          </div>
+          <div id="price3">
+            <p style="margin-top: 5px">Save</p>
+            <p style="font-size: 20px; margin-top: -15px">₹ 16</p>
+          </div>
+        </div>
+        <button id="but">🛒 ADD TO CART</button>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+<%-include("./partials/footer") %>
+<script src="/js/search.js"></script>
+<script src="/js/navbar.js"></script>
+<script src="/js/grocery.js"></script>
+<script>
+  let tb = document.getElementById("topbar");
+  tb.innerHTML = topbar();
+  function topbar() {
+    return `
+         <a href="/categories" id=""><i class="fas fa-bars"></i>All categories</a>
+      <div><a href="/categories/grocery">Groceery</a></div>
+      <div><a href="/categories/fruits&veg">Fruits & Vegetables</a></div>
+      <div><a href="cook&serve.html">Cookware & Serveware</a></div>
+      <div><a href="kitchen.html">Kitchen Appliances</a></div>
+    `;
+  }
+</script>

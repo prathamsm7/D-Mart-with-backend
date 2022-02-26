@@ -14,10 +14,10 @@ let tb = document.getElementById("topbar");
 tb.innerHTML = topbar();
 function topbar() {
   return `
-         <a href="allcatageory.html" id=""><i class="fas fa-bars"></i>All categories</a>
-      <div><a href="grocery.html">Groceery</a></div>
+         <a href="/categories" id=""><i class="fas fa-bars"></i>All categories</a>
+      <div><a href="/categories/grocery">Groceery</a></div>
+      <div><a href="/categories/fruits&veg">Fruits & Vegetables</a></div>
       <div><a href="cook&serve.html">Cookware & Serveware</a></div>
-      <div><a href="fruits&veg.html">Fruits & Vegetables</a></div>
       <div><a href="kitchen.html">Kitchen Appliances</a></div>
     `;
 }

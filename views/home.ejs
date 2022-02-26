@@ -1,4 +1,15 @@
 <div id="navbar"><%- include("./partials/navbar") %></div>
+
+<script>
+  let name = document.getElementById("nav-name");
+
+  `<% if (user) { %>`;
+  name.innerText = `<%= user.email%>`;
+  ` <% }else if(user.user){ %>`;
+  name.innerText = `<%= user.user.email%>`;
+  `<%}%>`;
+</script>
+
 <%- include("./partials/header") %>
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -156,7 +167,9 @@
   Copyright © 2022 Avenue E-Commerce Limited (AEL). All Rights Reserved.
 </p>
 
-<%-include("./partials/footer") %>
 <script src="/js/home.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/footer.js"></script>
+<script src="/js/navbar.js"></script>
+
+<%-include("./partials/footer") %>

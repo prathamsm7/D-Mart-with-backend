@@ -54,7 +54,6 @@ let data = [
 let menu = document.getElementById("openmenu");
 
 menu.addEventListener("click", () => {
-  console.log("menu open");
   document.getElementById("mySidepanel").style.width = "100%";
 
   let cate = document.getElementById("categories");

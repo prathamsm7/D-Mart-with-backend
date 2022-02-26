@@ -10,9 +10,13 @@
 }
 
 #topbar > div {
-  /* width: 160px; */
+  width: 15%;
   padding-left: 10px;
   margin-right: 20px;
+}
+
+#topbar > div > a {
+  font-size: small;
 }
 
 #topbar :first-child {

@@ -12,6 +12,15 @@ const productController = require("./controllers/product.controller");
 const userController = require("./controllers/user.controller");
 const { register, login } = require("./controllers/auth.controller");
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use(express.json());
 app.set("view engine", "ejs"), app.set("views", path.join(__dirname, "/views"));
 app.use(express.static(path.join(__dirname, "/public")));

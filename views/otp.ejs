@@ -1,36 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DMart Ready</title>
-    <link rel="icon" type="image/png" href="./images/icon.png" />
-  </head>
-  <style></style>
-  <body>
-    <link rel="stylesheet" href="/css/otp.css" />
-    <form>
-      <div id="main">
-        <div class="row">
-          <div class="col-50">
-            <!-- <div>Enter OTP</div>
+<link rel="icon" type="image/png" href="./images/icon.png" />
+<link rel="stylesheet" href="/css/otp.css" />
+<form>
+  <div id="main">
+    <div class="row">
+      <div class="col-50">
+        <!-- <div>Enter OTP</div>
     <input type="number" id="otp" /> -->
 
-            <label>Enter OTP</label>
-            <input
-              type="number"
-              id="otp"
-              placeholder="Enter 1234 as OTP"
-              required
-            />
-            <input type="submit" value="Validate OTP" class="btn" />
-          </div>
-        </div>
+        <label>Enter OTP</label>
+        <input
+          type="number"
+          id="otp"
+          placeholder="Enter 1234 as OTP"
+          required
+        />
+        <input type="submit" value="Validate OTP" class="btn" />
       </div>
-    </form>
-  </body>
-</html>
+    </div>
+  </div>
+</form>
+
 <script>
   document.querySelector("form").addEventListener("submit", validate);
 

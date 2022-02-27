@@ -9,7 +9,6 @@ const token = (user) => {
 
 const register = async (req, res) => {
   try {
-    console.log(req.body);
     //find user by email
     let user = await User.findOne({ email: req.body.email });
     //if user then err
@@ -24,10 +23,10 @@ const register = async (req, res) => {
     const newToken = token(user);
     // return user and token
     // console.log(user);
-    return res.render("login", { user });
+    return res.render("signin", { user });
   } catch (e) {
     console.log(e);
-    return res.redirect("/register");
+    return res.send("/register");
   }
 };
 
@@ -41,8 +40,8 @@ const login = async (req, res) => {
     //if user found then match the password
     const match = user.checkPassword(req.body.password);
     if (!match) {
-      window.alert("email or password id invalid");
-      // return res.status(400).send("email or password id invalid");
+      console.log("email or password id invalid");
+      return res.status(400).send("email or password id invalid");
     }
 
     const newToken = token(user);
@@ -53,7 +52,7 @@ const login = async (req, res) => {
     });
 
     // console.log("user", user);
-    res.render("home", { user });
+    res.redirect("/");
   } catch (e) {
     console.log(e.message);
   }

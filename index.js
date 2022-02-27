@@ -27,6 +27,7 @@ monoose
     console.log(err.message);
   });
 
+app.use("", homeRoutes);
 app.get("/register", async (req, res) => {
   res.render("signup");
 });
@@ -36,8 +37,6 @@ app.get("/login", async (req, res) => {
   res.render("signin");
 });
 app.post("/login", login);
-
-app.use("", homeRoutes);
 
 app.use("/categories", categories);
 app.use("/users", userController);

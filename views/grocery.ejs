@@ -11,7 +11,7 @@
 
   name.innerText = `<%= user.user.email%>`;
   let userId = `<%=user.user._id%>`;
-  cart.firstElementChild.href = `https://d-mart-clone.herokuapp.com/${userId}/cart`;
+  cart.firstElementChild.href = `https://d-mart-clone.herokuapp.com/users/${userId}/cart`;
   cartTotal.innerText = `<%= user.user.cart.length%>`;
   `<%}%>`;
 </script>

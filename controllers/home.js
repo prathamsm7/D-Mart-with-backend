@@ -2,6 +2,8 @@ const express = require("express");
 const jsonwebtoken = require("jsonwebtoken");
 const router = express.Router();
 const isLoggedIn = require("../middlewares/auth");
+const userModel = require("../models/user.model");
+const { token } = require("./auth.controller");
 
 router.get("", async (req, res) => {
   try {
@@ -9,7 +11,6 @@ router.get("", async (req, res) => {
     let user;
 
     if (req.headers.cookie) {
-      console.log(req.headers);
       user = isLoggedIn(req);
     } else {
       res.render("signin");
@@ -26,9 +27,25 @@ router.get("", async (req, res) => {
       // };
     }
 
-    console.log("user", user);
+    if (req.headers.referer == "http://localhost:4000/otp") {
+      user = await userModel
+        .findByIdAndUpdate({ _id: user.user._id }, { $set: { cart: [] } })
+        .populate("cart")
+        .lean()
+        .exec();
 
-    return res.render("home", user);
+      const newToken = token(user);
+      user.cart = [];
+
+      res.cookie("token", "");
+      res.cookie("token", newToken, {
+        expire: new Date() + 9999,
+      });
+
+      return res.render("cart", { user });
+    }
+
+    return res.render("home", { user });
   } catch (error) {
     console.log(error);
   }

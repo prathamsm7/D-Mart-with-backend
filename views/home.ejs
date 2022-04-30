@@ -2,11 +2,15 @@
 
 <script>
   let name = document.getElementById("nav-name");
+  let cart = document.getElementById("cart");
+  let cartTotal = document.getElementById("crTotal");
 
-  `<% if (user) { %>`;
-  name.innerText = `<%= user.email%>`;
-  ` <% }else if(user.user){ %>`;
+  `<%if(user.user){ %>`;
+
   name.innerText = `<%= user.user.email%>`;
+  let userId = `<%=user.user._id%>`;
+  cart.firstElementChild.href = `http://localhost:4000/users/${userId}/cart`;
+  cartTotal.innerText = `<%= user.user.cart.length%>`;
   `<%}%>`;
 </script>
 

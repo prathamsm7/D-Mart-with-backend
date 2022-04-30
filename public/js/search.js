@@ -227,7 +227,7 @@ btncl.forEach((btn) => {
 
         li.addEventListener("click", () => {
           console.log(prod);
-          window.location.href = "grocery.html";
+          window.location.href = "/categories/grocery";
         });
 
         li.append(img, p);
@@ -250,7 +250,7 @@ btncl.forEach((btn) => {
 
         li.addEventListener("click", () => {
           console.log(prod);
-          window.location.href = "grocery.html";
+          window.location.href = "/categories/grocery";
         });
 
         li.append(img, p);

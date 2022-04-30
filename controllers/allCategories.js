@@ -34,12 +34,20 @@ router.get("/all", async (req, res) => {
 
 router.get("/grocery", async (req, res) => {
   try {
-    let lists = await Cate.findOne({ name: "grocerry" }).lean().exec();
+    let lists = await productModel.find({ category: "grocerry" }).lean().exec();
 
     let user = isLoggedIn(req);
+    let finalList = [];
 
-    lists = lists.products;
-    // res.send(lists);
+    if (req.query.subCat) {
+      lists.map((element) => {
+        if (element.subCategory == req.query.subCat) {
+          finalList.push(element);
+        }
+      });
+      return res.render("grocery", { lists: finalList, user });
+    }
+
     res.render("grocery", { lists, user });
   } catch (error) {
     return res.render("error");
@@ -48,28 +56,20 @@ router.get("/grocery", async (req, res) => {
 
 router.get("/fruits&veg", async (req, res) => {
   try {
-    let query;
-    if (req.query.subCat) {
-      query = req.query;
-    }
-
     let lists = await productModel.find({ category: "fruits" }).lean().exec();
 
     let user = isLoggedIn(req);
-
     let finalList = [];
 
     if (req.query.subCat) {
       lists = lists.map((element) => {
         if (element.subCategory == req.query.subCat) {
-          console.log(req.query.subCat == element.subCategory);
           finalList.push(element);
         }
       });
       return res.render("fruits", { lists: finalList, user });
     }
-    // console.log(lists);
-    // res.send(lists);
+
     res.render("fruits", { lists, user });
   } catch (error) {
     return res.render("error");
